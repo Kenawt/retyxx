@@ -9,17 +9,22 @@ function replyYes() {
         </div>
     `;
 }
-
 function replyNo() {
     noCount++;
 
+    let yesButton = document.getElementById("yesButton");
     let noButton = document.getElementById("noButton");
 
     if (noCount < 5) {
-        noButton.style.transform = `scale(${1 + noCount * 0.3})`;
-        noButton.innerText = noCount === 1 ? "Are you sure? ?" : "Think twice! :3";
+        // Increase Yes button size
+        yesButton.style.transform = `scale(${1 + noCount * 0.3})`;
+
+        // Change No button text to be playful
+        noButton.innerText = ["Are you sure? ;-;", "Really? T,T", "Think again pls bb", "AAAAAA plEEEEASE", "HEH HEH PLEASE"][noCount - 1];
     } else {
-        noButton.innerText = "Yes and I wasn't forced into this! :D";
-        noButton.style.transform = `scale(2)`;
+        // Hide the No button and make Yes cover the screen
+        noButton.style.display = "none";
+        yesButton.style.transform = "scale(10)";
+        yesButton.innerText = "YES (IM NOT FORCED TO SAY YES)";
     }
 }
